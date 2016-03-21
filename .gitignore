@@ -2,6 +2,9 @@
 *.apk
 *.ap_
 
+.idea
+*.imp
+
 # Files for the Dalvik VM
 *.dex
 
