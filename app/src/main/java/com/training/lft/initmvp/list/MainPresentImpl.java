@@ -22,7 +22,7 @@ public class MainPresentImpl implements MainPresenter, FindItemInteractor.OnFini
 
     @Override
     public void onItemClick(int position) {
-
+        mainView.showMessage("Item clicked at position " + String.valueOf(position + 1));
     }
 
     @Override
