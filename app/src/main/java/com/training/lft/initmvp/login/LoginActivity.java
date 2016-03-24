@@ -1,5 +1,6 @@
 package com.training.lft.initmvp.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -8,7 +9,7 @@ import android.widget.Toast;
 
 import com.training.lft.initmvp.BaseActivity;
 import com.training.lft.initmvp.R;
-import com.training.lft.initmvp.list.FindItemInteractorImpl;
+import com.training.lft.initmvp.list.MainActivity;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -38,13 +39,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @OnClick({R.id.button})
     public void onClick(View view) {
-       // loginPresenter.validateCredentials(uname.getText().toString(), pwd.getText().toString());
-        someMockTest();
+        loginPresenter.validateCredentials(uname.getText().toString(), pwd.getText().toString());
     }
-    private void someMockTest(){
-        FindItemInteractorImpl impl = new FindItemInteractorImpl();
-        impl.someMockingTest();
-    }
+
 
     /**
      * ####LoginView or view interaction start
@@ -77,6 +74,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void navigateToHome() {
         showProgress(false);
         Toast.makeText(this, "Success login", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, MainActivity.class));
 
     }
 
