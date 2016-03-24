@@ -6,9 +6,9 @@ package com.training.lft.initmvp.login;
 public interface LoginInteractor {
 
     interface OnLoginFinishedListener {
-        void onUsernameError();
+        void onUsernameError(String error);
 
-        void onPasswordError();
+        void onPasswordError(String error);
 
         void onSuccess();
     }

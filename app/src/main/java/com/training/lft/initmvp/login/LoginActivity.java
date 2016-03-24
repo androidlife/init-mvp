@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.training.lft.initmvp.BaseActivity;
 import com.training.lft.initmvp.R;
+import com.training.lft.initmvp.list.FindItemInteractorImpl;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity implements LoginView {
 
@@ -19,6 +22,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Bind(R.id.password)
     EditText pwd;
 
+    private LoginPresenter loginPresenter;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
@@ -27,7 +32,18 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loginPresenter = new LoginPresenterImpl(this);
 
+    }
+
+    @OnClick({R.id.button})
+    public void onClick(View view) {
+       // loginPresenter.validateCredentials(uname.getText().toString(), pwd.getText().toString());
+        someMockTest();
+    }
+    private void someMockTest(){
+        FindItemInteractorImpl impl = new FindItemInteractorImpl();
+        impl.someMockingTest();
     }
 
     /**
@@ -45,18 +61,22 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void setUnameError(String errorMsg) {
+        showProgress(false);
         uname.setError(errorMsg);
 
     }
 
     @Override
     public void setPwdError(String errorMsg) {
+        showProgress(false);
         pwd.setError(errorMsg);
 
     }
 
     @Override
     public void navigateToHome() {
+        showProgress(false);
+        Toast.makeText(this, "Success login", Toast.LENGTH_SHORT).show();
 
     }
 

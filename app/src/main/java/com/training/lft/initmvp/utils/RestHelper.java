@@ -4,6 +4,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import cz.msebera.android.httpclient.Header;
+import timber.log.Timber;
 
 /**
  * Created by laaptu on 3/23/16.
@@ -41,6 +42,7 @@ public class RestHelper {
     }
 
     public void onResult(String result, StatusCallback statusCallback) {
+        Timber.d("API message =%s",result);
         Status status = new Status();
         if (result == null) {
             status.status = Status.ERROR_UNAME;
